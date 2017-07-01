@@ -36,6 +36,34 @@ public class App {
 		}
 	}
 
+	public static void updateCoin(Coin coin) {
+		Call<ResponseBody> response = service.updateCoin(coin.getId(), coin);
+		try {
+			Response<ResponseBody> r = response.execute();
+			if (r.isSuccessful()) {
+				System.out.println("Successfully updated the coin to the database: " + r.message());
+			} else {
+				System.out.println("Failed to update the coin to the database. " + r.code());
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void getCoin(String coinId) {
+		Call<ResponseBody> response = service.getCoin(coinId);
+		try {
+			Response<ResponseBody> r = response.execute();
+			if (r.isSuccessful()) {
+				System.out.println("Successfully updated the coin to the database: " + r.message());
+			} else {
+				System.out.println("Failed to update the coin to the database. " + r.code());
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public static void main( String[] args ) throws ParseException {
 		service = retrofit.create(ParseService.class);
 
@@ -53,7 +81,7 @@ public class App {
 
 	            while ((readLine = b.readLine()) != null) {
 	            	Coin c = new Coin();
-	        		
+
 	            	String[] temp = readLine.split(",");
 	            	c.setId(temp[0]);
 	            	c.setName(temp[1]);
@@ -64,22 +92,22 @@ public class App {
 	            	c.setPrice69(temp[6]);
 	            	c.setPrice70(temp[7]);
 	            	c.setQuantity(temp[8]);
-	        		insertCoin(c);
+	            	updateCoin(c);
 	            	readLine.split(",");
 	            	System.out.println(readLine);
 	            	for(int i = 0;i<9;i++){
 	            		System.out.println(temp[i]);
 	            	}
-	                
+
 	            }
 
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
-		
+
 
 		// insert the coin to the database
-		
+
 	}
 
 }
