@@ -1,5 +1,8 @@
 package com.datang.coin;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 
 import org.parse4j.ParseException;
@@ -38,11 +41,45 @@ public class App {
 
 		// TODO: Parse all your coins and call this method to insert them all to the database
 		// create all your coins
-		Coin c = new Coin();
-		c.setName("FFF2");
+		 try {
+
+	            File f = new File("C:\\Users\\Alfred&Iris\\Desktop\\PandaCoin.txt");
+
+	            BufferedReader b = new BufferedReader(new FileReader(f));
+
+	            String readLine = "";
+
+	            System.out.println("Reading file using Buffered Reader");
+
+	            while ((readLine = b.readLine()) != null) {
+	            	Coin c = new Coin();
+	        		
+	            	String[] temp = readLine.split(",");
+	            	c.setId(temp[0]);
+	            	c.setName(temp[1]);
+	            	c.setYear(temp[2]);
+	            	c.setSize(temp[3]);
+	            	c.setPrice(temp[4]);
+	            	c.setPrice68(temp[5]);
+	            	c.setPrice69(temp[6]);
+	            	c.setPrice70(temp[7]);
+	            	c.setQuantity(temp[8]);
+	        		insertCoin(c);
+	            	readLine.split(",");
+	            	System.out.println(readLine);
+	            	for(int i = 0;i<9;i++){
+	            		System.out.println(temp[i]);
+	            	}
+	                
+	            }
+
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+		
 
 		// insert the coin to the database
-		insertCoin(c);
+		
 	}
 
 }
