@@ -69,50 +69,54 @@ public class App {
 
 	public static void main( String[] args ) throws ParseException {
 		service = retrofit.create(ParseService.class);
-
-		// TODO: Parse all your coins and call this method to insert them all to the database
-		// create all your coins
-		 try {
-
-	            File f = new File("C:\\Users\\Alfred&Iris\\Desktop\\PandaGoldCoin.txt");
-
-	            BufferedReader b = new BufferedReader(new FileReader(f));
-
-	            String readLine = "";
-
-	            System.out.println("Reading file using Buffered Reader");
-
-	            while ((readLine = b.readLine()) != null) {
-	            	Coin c = new Coin();
-
-	            	String[] temp = readLine.split(",");
-	            	c.setId(temp[0]);
-	            	c.setName(temp[1]);
-	            	c.setYear(temp[2]);
-	            	c.setSize(temp[3]);
-	            	c.setPrice(temp[4]);
-	            	c.setPrice68(temp[5]);
-	            	c.setPrice69(temp[6]);
-	            	c.setPrice70(temp[7]);
-	            	c.setQuantity(temp[8]);
-	            	c.setImageUrlLarge("http://picsforcoin.oss-us-west-1.aliyuncs.com/emptycoin/emptycoinstandard.png");
-	            	c.setImageUrlSmall("http://picsforcoin.oss-us-west-1.aliyuncs.com/emptycoin/emptycoinsmall.png");
-	            	insertCoin(c);
-	            	readLine.split(",");
-	            	System.out.println(readLine);
-	            	for(int i = 0;i<9;i++){
-	            		System.out.println(temp[i]);
-	            	}
-
-	            }
-
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
+		getCoin("h1se332faG");
+		
+		 
 
 
-		// insert the coin to the database
 
 	}
 
+	public static void  uploadData() throws ParseException{
+		// TODO: Parse all your coins and call this method to insert them all to the database
+		// create all your coins
+		try {
+
+            File f = new File("C:\\Users\\Alfred&Iris\\Desktop\\PandaGoldCoin.txt");
+
+            BufferedReader b = new BufferedReader(new FileReader(f));
+
+            String readLine = "";
+
+            System.out.println("Reading file using Buffered Reader");
+
+            while ((readLine = b.readLine()) != null) {
+            	Coin c = new Coin();
+
+            	String[] temp = readLine.split(",");
+            	c.setId(temp[0]);
+            	c.setName(temp[1]);
+            	c.setYear(temp[2]);
+            	c.setSize(temp[3]);
+            	c.setPrice(temp[4]);
+            	c.setPrice68(temp[5]);
+            	c.setPrice69(temp[6]);
+            	c.setPrice70(temp[7]);
+            	c.setQuantity(temp[8]);
+            	c.setImageUrlLarge("http://picsforcoin.oss-us-west-1.aliyuncs.com/emptycoin/emptycoinstandard.png");
+            	c.setImageUrlSmall("http://picsforcoin.oss-us-west-1.aliyuncs.com/emptycoin/emptycoinsmall.png");
+            	insertCoin(c);
+            	readLine.split(",");
+            	System.out.println(readLine);
+            	for(int i = 0;i<9;i++){
+            		System.out.println(temp[i]);
+            	}
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		// insert the coin to the database
+	}
 }
