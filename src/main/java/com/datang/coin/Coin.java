@@ -11,6 +11,8 @@ public class Coin {
 	private String price69;
 	private String price70;
 	private String quantity;
+	private String imageUrlLarge;
+	private String imageUrlSmall;
 	
 	
 
@@ -50,6 +52,14 @@ public class Coin {
 		this.quantity = quantity;
 	}
 	
+	public void setImageUrlLarge(String url){
+		this.imageUrlLarge = url;
+	}
+	
+	public void setImageUrlSmall(String url){
+		this.imageUrlSmall = url;
+	}
+	
 	public String getId(){
 		return id;
 	}
@@ -84,5 +94,13 @@ public class Coin {
 	
 	public String getQuantity(){
 		return quantity;
+	}
+	
+	public String getImageUrlLarge(){
+		return imageUrlLarge;
+	}
+	
+	public String getImageUrlSmall(){
+		return imageUrlSmall;
 	}
 }

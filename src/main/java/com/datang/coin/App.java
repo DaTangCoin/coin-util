@@ -71,7 +71,7 @@ public class App {
 		// create all your coins
 		 try {
 
-	            File f = new File("C:\\Users\\Alfred&Iris\\Desktop\\PandaCoin.txt");
+	            File f = new File("C:\\Users\\Alfred&Iris\\Desktop\\PandaGoldCoin.txt");
 
 	            BufferedReader b = new BufferedReader(new FileReader(f));
 
@@ -92,7 +92,9 @@ public class App {
 	            	c.setPrice69(temp[6]);
 	            	c.setPrice70(temp[7]);
 	            	c.setQuantity(temp[8]);
-	            	updateCoin(c);
+	            	c.setImageUrlLarge("http://picsforcoin.oss-us-west-1.aliyuncs.com/emptycoin/emptycoinstandard.png");
+	            	c.setImageUrlSmall("http://picsforcoin.oss-us-west-1.aliyuncs.com/emptycoin/emptycoinsmall.png");
+	            	insertCoin(c);
 	            	readLine.split(",");
 	            	System.out.println(readLine);
 	            	for(int i = 0;i<9;i++){
