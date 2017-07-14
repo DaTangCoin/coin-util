@@ -50,18 +50,21 @@ public class App {
 		}
 	}
 
-	public static void getCoin(String coinId) {
-		Call<ResponseBody> response = service.getCoin(coinId);
+	public static CoinResult getCoin(String coinGroup, String coinId) {
+		final String coinWhereQueryStr = "{\"id\":\"" + coinId + "\"}";
+		Call<CoinResult> response = service.getCoin(coinGroup, coinWhereQueryStr);
 		try {
-			Response<ResponseBody> r = response.execute();
+			Response<CoinResult> r = response.execute();
 			if (r.isSuccessful()) {
-				System.out.println("Successfully updated the coin to the database: " + r.message());
+				System.out.println("Successfully get the coin from the database: " + r.message());
+				return r.body();
 			} else {
-				System.out.println("Failed to update the coin to the database. " + r.code());
+				System.out.println("Failed to get the coin from the database. " + r.code());
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	public static void main( String[] args ) throws ParseException {
