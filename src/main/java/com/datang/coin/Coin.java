@@ -1,6 +1,9 @@
 package com.datang.coin;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Coin {
@@ -16,6 +19,7 @@ public class Coin {
 	private String quantity;
 	private String imageUrlLarge;
 	private String imageUrlSmall;
+	@JsonProperty(access=Access.WRITE_ONLY)
 	private String objectId;
 	
 
@@ -104,10 +108,18 @@ public class Coin {
 		return imageUrlLarge;
 	}
 
+	@Override
+	public String toString() {
+		return "Coin [id=" + id + ", name=" + name + ", year=" + year + ", size=" + size + ", price=" + price
+				+ ", price68=" + price68 + ", price69=" + price69 + ", price70=" + price70 + ", quantity=" + quantity
+				+ ", imageUrlLarge=" + imageUrlLarge + ", imageUrlSmall=" + imageUrlSmall + ", objectId=" + objectId
+				+ "]";
+	}
+
 	public String getImageUrlSmall(){
 		return imageUrlSmall;
 	}
-
+	
 	public String getObjectId() {
 		return objectId;
 	}

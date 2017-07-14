@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.parse4j.ParseException;
 
@@ -69,8 +70,14 @@ public class App {
 
 	public static void main( String[] args ) throws ParseException {
 		service = retrofit.create(ParseService.class);
-		uploadData();
-		getCoin("coin10","1982PGC10");
+		//uploadData();
+		ArrayList<Coin> list = new ArrayList<Coin>();
+		list = (ArrayList<Coin>) getCoin("coin10","1982PGC10").getResults();
+		for(int i=0; i<list.size();i++){
+			list.get(i).setPrice68("1111");
+			System.out.println(list.get(i));
+		}
+		
 		
 		 
 
