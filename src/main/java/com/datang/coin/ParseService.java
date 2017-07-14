@@ -12,7 +12,7 @@ import retrofit2.http.Query;
 
 public interface ParseService {
 
-	@POST("classes/coin10")
+	@POST("classes/coin11")
 	@Headers({
 	    "X-Parse-Application-Id: coin",
 	    "Content-Type: application/json"

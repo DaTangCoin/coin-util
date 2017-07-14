@@ -13,7 +13,7 @@ public class Coin {
 	private String quantity;
 	private String imageUrlLarge;
 	private String imageUrlSmall;
-	
+	private String objectId;
 	
 
 	public void setId(String id){
@@ -102,5 +102,13 @@ public class Coin {
 	
 	public String getImageUrlSmall(){
 		return imageUrlSmall;
+	}
+
+	public String getObjectId() {
+		return objectId;
+	}
+
+	public void setObjectId(String objectId) {
+		this.objectId = objectId;
 	}
 }
