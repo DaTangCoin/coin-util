@@ -19,12 +19,12 @@ public interface ParseService {
 	})
 	Call<ResponseBody> createCoin(@Body Coin coin);
 
-	@PUT("classes/coin/{coinId}")
+	@PUT("classes/{coinGroup}/{objectId}")
 	@Headers({
 	    "X-Parse-Application-Id: coin",
 	    "Content-Type: application/json"
 	})
-	Call<ResponseBody> updateCoin(@Path("coinId") String coinId, @Body Coin coin);
+	Call<ResponseBody> updateCoin(@Path("coinGroup") String coinGroup, @Path("objectId") String objectId, @Body Coin coin);
 
 	@GET("classes/{coinGroup}")
 	@Headers({

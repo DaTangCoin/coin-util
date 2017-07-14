@@ -36,8 +36,8 @@ public class App {
 		}
 	}
 
-	public static void updateCoin(Coin coin) {
-		Call<ResponseBody> response = service.updateCoin(coin.getId(), coin);
+	public static void updateCoin(String coinGroup, Coin coin) {
+		Call<ResponseBody> response = service.updateCoin(coinGroup, coin.getObjectId(), coin);
 		try {
 			Response<ResponseBody> r = response.execute();
 			if (r.isSuccessful()) {
@@ -71,10 +71,6 @@ public class App {
 		service = retrofit.create(ParseService.class);
 		uploadData();
 		getCoin("coin10","1982PGC10");
-		
-		 
-
-
 
 	}
 
@@ -104,7 +100,7 @@ public class App {
             	c.setPrice69(temp[6]);
             	c.setPrice70(temp[7]);
             	c.setQuantity(temp[8]);
-            	
+
             	c.setImageUrlLarge("http://picsforcoin.oss-us-west-1.aliyuncs.com/emptycoin/emptycoinstandard.png");
             	c.setImageUrlSmall("http://picsforcoin.oss-us-west-1.aliyuncs.com/emptycoin/emptycoinsmall.png");
             	insertCoin(c);
