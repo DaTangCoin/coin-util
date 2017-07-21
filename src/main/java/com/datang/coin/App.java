@@ -71,14 +71,8 @@ public class App {
 	public static void main( String[] args ) throws ParseException {
 		service = retrofit.create(ParseService.class);
 
-		//uploadData();
-		ArrayList<Coin> list = new ArrayList<Coin>();
-		list = (ArrayList<Coin>) getCoin("coin10","1982PGC10").getResults();
-		for(int i=0; i<list.size();i++){
-			list.get(i).setPrice68("1111");
-			System.out.println(list.get(i));
-		}
-		
+		uploadData();
+		//updateCoinPrice("1982PGC10");
 
 
 	}
@@ -109,7 +103,7 @@ public class App {
             	c.setPrice69(temp[6]);
             	c.setPrice70(temp[7]);
             	c.setQuantity(temp[8]);
-
+            	c.setPriceUrl(temp[9]);
             	c.setImageUrlLarge("http://picsforcoin.oss-us-west-1.aliyuncs.com/emptycoin/emptycoinstandard.png");
             	c.setImageUrlSmall("http://picsforcoin.oss-us-west-1.aliyuncs.com/emptycoin/emptycoinsmall.png");
             	insertCoin(c);
@@ -125,5 +119,33 @@ public class App {
             e.printStackTrace();
         }
 		// insert the coin to the database
+	}
+	
+	public static void updateCoinPrice(String id){
+		ArrayList<Coin> list = new ArrayList<Coin>();
+		list = (ArrayList<Coin>) getCoin("coin12",id).getResults();
+		for(int i=0; i<list.size();i++){
+			System.out.println(list.get(i));
+			PriceUrl url = new PriceUrl(list.get(i).getPriceUrl());
+			try {
+				list.get(i).setPrice(url.Price());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(list.get(i));
+			updateCoin("coin12",list.get(i));
+		}
+	}
+	
+	
+	public static void updateCoinUrl(String id, String url){
+		ArrayList<Coin> list = new ArrayList<Coin>();
+		list = (ArrayList<Coin>) getCoin("coin12",id).getResults();
+		for(int i=0; i<list.size();i++){
+			list.get(i).setImageUrlLarge(url);;
+			System.out.println(list.get(i));
+			updateCoin("coin12",list.get(i));
+		}
 	}
 }

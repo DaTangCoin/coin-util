@@ -19,6 +19,7 @@ public class Coin {
 	private String quantity;
 	private String imageUrlLarge;
 	private String imageUrlSmall;
+	private String priceUrl;
 	@JsonProperty(access=Access.WRITE_ONLY)
 	private String objectId;
 	
@@ -126,5 +127,13 @@ public class Coin {
 
 	public void setObjectId(String objectId) {
 		this.objectId = objectId;
+	}
+
+	public String getPriceUrl() {
+		return priceUrl;
+	}
+
+	public void setPriceUrl(String priceUrl) {
+		this.priceUrl = priceUrl;
 	}
 }
