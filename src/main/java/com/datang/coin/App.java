@@ -68,6 +68,22 @@ public class App {
 		return null;
 	}
 
+	public static CoinResult listCoins(String coinGroup) {
+		Call<CoinResult> response = service.listCoins(coinGroup);
+		try {
+			Response<CoinResult> r = response.execute();
+			if (r.isSuccessful()) {
+				System.out.println("Successfully list the coins from the database: " + r.message());
+				return r.body();
+			} else {
+				System.out.println("Failed to list the coins from the database. " + r.code());
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	public static void main( String[] args ) throws ParseException {
 		service = retrofit.create(ParseService.class);
 
@@ -120,7 +136,7 @@ public class App {
         }
 		// insert the coin to the database
 	}
-	
+
 	public static void updateCoinPrice(String id){
 		ArrayList<Coin> list = new ArrayList<Coin>();
 		list = (ArrayList<Coin>) getCoin("coin12",id).getResults();
@@ -137,8 +153,8 @@ public class App {
 			updateCoin("coin12",list.get(i));
 		}
 	}
-	
-	
+
+
 	public static void updateCoinUrl(String id, String url){
 		ArrayList<Coin> list = new ArrayList<Coin>();
 		list = (ArrayList<Coin>) getCoin("coin12",id).getResults();

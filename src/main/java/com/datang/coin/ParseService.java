@@ -32,4 +32,11 @@ public interface ParseService {
 	    "Content-Type: application/json"
 	})
 	Call<CoinResult> getCoin(@Path("coinGroup") String coinGroup, @Query("where") String queryString);
+
+	@GET("classes/{coinGroup}")
+	@Headers({
+	    "X-Parse-Application-Id: coin",
+	    "Content-Type: application/json"
+	})
+	Call<CoinResult> listCoins(@Path("coinGroup") String coinGroup);
 }
